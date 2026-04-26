@@ -9,16 +9,16 @@
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Unbounded:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            /* Премиальная палитра: глубокий бархатный черный и теплый фарфоровый белый */
+            /* Премиальная палитра */
             --black: #030303;
             --deep: #0a0a0a;
             --white: #F8F6F0;
             --pure: #ffffff;
-            --muted: rgba(248, 246, 240, 0.92); /* Увеличена контрастность для читаемости */
-            --muted2: rgba(248, 246, 240, 0.82); /* Увеличена контрастность для читаемости */
+            --muted: rgba(248, 246, 240, 0.92);
+            --muted2: rgba(248, 246, 240, 0.82);
             --line: rgba(255, 255, 255, 0.08);
             --darkline: rgba(5, 5, 5, 0.12);
-            --red: #a41b15; /* Насыщенный красный для акционной полосы */
+            --red: #a41b15; 
             --max: 1280px; 
             --shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
             --glass: rgba(20, 20, 20, 0.6);
@@ -48,7 +48,7 @@
 
         /* --- НАВИГАЦИЯ --- */
         .topline { position: fixed; top: 20px; left: 0; right: 0; z-index: 100; pointer-events: none; transition: transform 0.4s var(--easing); }
-        .topline .container { position: relative; } /* Нужно для позиционирования бирки */
+        .topline .container { position: relative; }
         
         .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 16px 0 24px; border-radius: 999px; background: rgba(8, 8, 8, 0.92); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1); pointer-events: auto; }
         .brand { display: flex; align-items: center; gap: 14px; min-width: max-content; transition: opacity 0.3s; }
@@ -56,80 +56,37 @@
         
         .brand-mark { 
             width: 48px; height: 48px; border-radius: 50%; 
-            background-color: #fff;
-            background-image: var(--logo);
-            background-position: center;
-            background-size: 65%; 
-            background-repeat: no-repeat;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.1); 
-            position: relative; 
+            background-color: #fff; background-image: var(--logo); background-position: center; background-size: 65%; background-repeat: no-repeat;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.1); position: relative; 
         }
         
         .brand-text strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
         .brand-text span { display: block; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 9px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
         
-        /* Шрифты шапки стали более фэшн и читаемыми */
         .nav-links { display: flex; gap: 32px; align-items: center; color: var(--pure); font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
         .nav-links a { position: relative; padding: 5px 0; opacity: 0.85; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 1; }
         .nav-links a:after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--pure); transition: width 0.4s var(--easing); }
         .nav-links a:hover:after { width: 100%; }
         
-        /* Кнопка с иконкой вешалки */
         .nav-cta { display: flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 999px; background: var(--pure); color: var(--black); font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.4s var(--easing); pointer-events: auto; }
         .nav-cta svg { width: 16px; height: 16px; transition: transform 0.4s var(--easing); }
         .nav-cta:hover { transform: scale(1.03); background: #e8e8e8; box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
         .nav-cta:hover svg { transform: scale(1.1) rotate(-8deg); }
 
-        /* Вау-эффект: Свисающая брендовая бирка */
         .fashion-tag {
-            position: absolute;
-            top: 72px; /* Выходит прямо из-под шапки */
-            right: 220px; /* Позиция рядом с кнопкой */
-            width: 34px;
-            height: 90px;
-            background: var(--red);
-            border-radius: 0 0 4px 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 10px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-            transform-origin: top center;
-            animation: swing 6s ease-in-out infinite;
-            z-index: 90;
-            pointer-events: none;
+            position: absolute; top: 72px; right: 220px; width: 34px; height: 90px;
+            background: var(--red); border-radius: 0 0 4px 4px; display: flex; flex-direction: column; align-items: center; padding-top: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            transform-origin: top center; animation: swing 6s ease-in-out infinite; z-index: 90; pointer-events: none;
         }
-        .fashion-tag:before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: var(--black);
-            border-radius: 50%;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
-        }
-        .fashion-tag span {
-            margin-top: auto;
-            margin-bottom: 14px;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-family: 'Unbounded', sans-serif;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            color: #fff;
-        }
-        @keyframes swing {
-            0%, 100% { transform: rotate(-4deg); }
-            50% { transform: rotate(4deg); }
-        }
+        .fashion-tag:before { content: ""; width: 8px; height: 8px; background: var(--black); border-radius: 50%; box-shadow: inset 0 1px 2px rgba(255,255,255,0.3); }
+        .fashion-tag span { margin-top: auto; margin-bottom: 14px; writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Unbounded', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; color: #fff; }
+        @keyframes swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
 
-        /* --- SVG АРТЫ С КИНЕМАТИКОЙ --- */
+        /* --- SVG АРТЫ --- */
         .spb-art { position: relative; width: 100%; height: 100%; min-height: inherit; overflow: hidden; background: radial-gradient(circle at 76% 18%, rgba(255,255,255,.05), transparent 30%), linear-gradient(145deg, rgba(255,255,255,.03), rgba(255,255,255,0) 50%), #030303; transition: transform 1s var(--easing); }
         .spb-art:before { content: ""; position: absolute; inset: -5%; background: var(--art) center/cover no-repeat; opacity: 0.85; filter: grayscale(0.2) contrast(1.1); transition: transform 1.2s var(--easing); }
         .spb-art:after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(3,3,3,0.9), transparent 60%); }
-        
-        /* Художественные слои */
         .art-neva { --art: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 1200'%3E%3Crect width='900' height='1200' fill='%23060606'/%3E%3Ccircle cx='700' cy='230' r='82' fill='%23fff' opacity='.16'/%3E%3Cg fill='%23f7f4ee' opacity='.88'%3E%3Crect x='140' y='430' width='95' height='230'/%3E%3Crect x='270' y='350' width='135' height='310'/%3E%3Crect x='450' y='470' width='100' height='190'/%3E%3Crect x='600' y='390' width='150' height='270'/%3E%3C/g%3E%3Cg fill='%23050505' opacity='.55'%3E%3Crect x='168' y='470' width='18' height='56'/%3E%3Crect x='195' y='470' width='18' height='56'/%3E%3Crect x='300' y='398' width='22' height='64'/%3E%3Crect x='352' y='398' width='22' height='64'/%3E%3Crect x='638' y='438' width='22' height='64'/%3E%3Crect x='700' y='438' width='22' height='64'/%3E%3C/g%3E%3Cpath d='M0 770 C190 700 260 850 460 770 S720 700 900 760 L900 1200 L0 1200Z' fill='%23fff' opacity='.14'/%3E%3Cpath d='M0 845 C230 760 300 930 520 835 S780 780 900 835' fill='none' stroke='%23fff' stroke-width='5' opacity='.25'/%3E%3Cpath d='M100 665 L800 665' stroke='%23f7f4ee' stroke-width='8' opacity='.58'/%3E%3Cpath d='M150 665 Q450 500 750 665' fill='none' stroke='%23f7f4ee' stroke-width='14' opacity='.75'/%3E%3C/svg%3E"); }
         .art-hermitage { --art: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 1200'%3E%3Crect width='900' height='1200' fill='%23060606'/%3E%3Cg fill='%23f7f4ee'%3E%3Crect x='90' y='390' width='720' height='410' opacity='.9'/%3E%3Crect x='140' y='305' width='620' height='90' opacity='.72'/%3E%3Cpath d='M120 305 L450 125 L780 305Z' opacity='.86'/%3E%3C/g%3E%3Cg fill='%23050505' opacity='.7'%3E%3Crect x='170' y='455' width='50' height='220'/%3E%3Crect x='270' y='455' width='50' height='220'/%3E%3Crect x='370' y='455' width='50' height='220'/%3E%3Crect x='480' y='455' width='50' height='220'/%3E%3Crect x='580' y='455' width='50' height='220'/%3E%3Crect x='680' y='455' width='50' height='220'/%3E%3C/g%3E%3Cpath d='M0 885 C180 815 330 945 510 875 S760 830 900 885' fill='none' stroke='%23fff' stroke-width='4' opacity='.22'/%3E%3C/svg%3E"); }
         .art-nevsky { --art: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 1200'%3E%3Crect width='900' height='1200' fill='%23070707'/%3E%3Cpath d='M110 230 L380 130 L380 940 L70 1100Z' fill='%23f7f4ee' opacity='.86'/%3E%3Cpath d='M520 170 L790 260 L830 1100 L520 940Z' fill='%23f7f4ee' opacity='.72'/%3E%3Cg fill='%23050505' opacity='.68'%3E%3Crect x='170' y='320' width='42' height='70'/%3E%3Crect x='260' y='290' width='42' height='70'/%3E%3Crect x='165' y='470' width='46' height='85'/%3E%3Crect x='255' y='430' width='46' height='85'/%3E%3Crect x='595' y='330' width='42' height='70'/%3E%3Crect x='690' y='370' width='42' height='70'/%3E%3C/g%3E%3Cpath d='M120 1200 L430 830 L780 1200Z' fill='%23222222'/%3E%3Cpath d='M450 830 L450 1200' stroke='%23fff' stroke-width='5' opacity='.28'/%3E%3C/svg%3E"); }
@@ -163,6 +120,7 @@
         .hero-visual { position: relative; min-height: 700px; perspective: 1000px; }
         
         .logo-orbit { position: absolute; z-index: 5; right: 20px; top: -10px; width: 300px; height: 300px; background-color: #fff; background-image: var(--logo); background-position: center; background-size: 68%; background-repeat: no-repeat; border-radius: 50%; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.8)); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         
         .photo-main { position: absolute; inset: 40px 0 0 60px; border-radius: 40px 40px 8px 40px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: var(--shadow); transform: rotateY(-5deg) rotateZ(2deg); background: #111; transition: transform 0.8s var(--easing); }
         .hero-visual:hover .photo-main { transform: rotateY(0deg) rotateZ(0deg) translateY(-10px); }
@@ -175,39 +133,29 @@
         .hero-card b { display: block; font-family: 'Playfair Display', serif; font-size: 34px; line-height: 1; letter-spacing: -0.02em; color: var(--pure); font-weight: 600; }
         .hero-card span { display: block; margin-top: 16px; color: var(--muted); line-height: 1.6; font-size: 15px; font-weight: 500; }
 
-        /* --- АКЦИОННАЯ ПОЛОСА (PROMO TAPE) --- */
+        /* --- АКЦИОННАЯ ПОЛОСА --- */
         .marquee-wrapper { position: relative; overflow: hidden; background: var(--black); padding: 50px 0; z-index: 20; }
         .promo-tape { 
-            background: var(--red); 
-            color: var(--pure); 
-            padding: 20px 0; 
-            transform: rotate(-2deg) scale(1.05); 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); 
-            border-top: 2px solid rgba(255,255,255,0.2);
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            background: var(--red); color: var(--pure); padding: 20px 0; transform: rotate(-2deg) scale(1.05); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); border-top: 2px solid rgba(255,255,255,0.2); border-bottom: 2px solid rgba(255,255,255,0.2);
         }
         .marquee-track { display: flex; gap: 40px; white-space: nowrap; animation: move 35s linear infinite; font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
         .marquee-track span:after { content: "✕"; margin-left: 40px; color: rgba(255,255,255,0.5); font-weight: 300; }
         @keyframes move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* --- ОБЩИЕ СЕКЦИИ И ЧЕРЕДОВАНИЕ --- */
+        /* --- ОБЩИЕ СЕКЦИИ --- */
         .section { padding: 140px 0; }
         .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 60px; }
         .section-kicker { display: inline-block; margin-bottom: 20px; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); color: var(--pure); font-family: 'Unbounded', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; background: rgba(255,255,255,0.02); }
         h2 { max-width: 800px; font-family: 'Playfair Display', serif; font-size: clamp(40px, 6vw, 72px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 500; text-wrap: balance; }
         .section-copy { max-width: 480px; color: var(--muted); line-height: 1.6; font-size: 18px; font-weight: 500; }
 
-        /* Стили для СВЕТЛЫХ секций (Белый блок) */
+        /* Стили для СВЕТЛЫХ секций */
         .bg-light { background-color: var(--white); color: var(--black); }
         .bg-light .section-kicker { color: var(--black); border-color: rgba(0,0,0,0.15); background: rgba(0,0,0,0.03); }
         .bg-light h2 { color: var(--black); }
         .bg-light .section-copy { color: rgba(0,0,0,0.85); }
-        
-        .bg-light .about-text, .bg-light .showroom-panel, .bg-light .contact-card, .bg-light .form-card {
-            background: rgba(0,0,0,0.02);
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 30px 60px rgba(0,0,0,0.05);
-        }
+        .bg-light .about-text, .bg-light .showroom-panel, .bg-light .contact-card, .bg-light .form-card { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5), 0 30px 60px rgba(0,0,0,0.05); }
         .bg-light .about-text p, .bg-light .showroom-panel p { color: rgba(0,0,0,0.85); font-weight: 500; }
         .bg-light .contact-row { background: #fff; border-color: rgba(0,0,0,0.06); box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
         .bg-light .contact-row span { color: rgba(0,0,0,0.5); }
@@ -230,37 +178,19 @@
 
         /* --- ЛЕНТА КАПСУЛ --- */
         .collections { 
-            display: flex; 
-            gap: 24px; 
-            overflow-x: auto; 
-            scroll-snap-type: x mandatory; 
-            padding-bottom: 40px; 
-            margin-bottom: -16px;
-            scrollbar-width: thin; 
-            scrollbar-color: rgba(255,255,255,0.2) rgba(255,255,255,0.02);
-            cursor: grab; 
+            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 40px; margin-bottom: -16px;
+            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) rgba(255,255,255,0.02); cursor: grab; 
         }
         .collections:active { cursor: grabbing; }
         .collections.active { scroll-snap-type: none; }
-        
         .collections::-webkit-scrollbar { height: 4px; }
         .collections::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; margin: 0 20px; }
         .collections::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
         .collections::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
         
         .collection-card { 
-            flex: 0 0 calc(33.333% - 16px); 
-            scroll-snap-align: start;
-            min-height: 600px; 
-            position: relative; 
-            overflow: hidden; 
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.08); 
-            background: #080808; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            display: block; 
-            text-decoration: none;
-            transition: all 0.6s var(--easing);
+            flex: 0 0 calc(33.333% - 16px); scroll-snap-align: start; min-height: 600px; position: relative; overflow: hidden; 
+            border-radius: 30px; border: 1px solid rgba(255,255,255,0.08); background: #080808; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; text-decoration: none; transition: all 0.6s var(--easing);
         }
         .collection-card:nth-child(even) { transform: translateY(30px); }
         
@@ -269,7 +199,6 @@
         .collection-info h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 12px; }
         .collection-info p { color: var(--muted); line-height: 1.6; font-size: 15px; font-weight: 500; }
         
-        /* HOVER ОВЕРЛЕЙ ДЛЯ КАПСУЛ И ПРЕДМЕТОВ */
         .hover-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s var(--easing); z-index: 10; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
         .hover-overlay span { color: #fff; font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); padding: 16px 32px; border-radius: 999px; letter-spacing: 0.1em; transition: all 0.3s; }
         
@@ -290,12 +219,14 @@
         .feature strong { display: block; margin-bottom: 6px; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
         .feature span { color: rgba(0,0,0,0.75); line-height: 1.5; font-size: 15px; font-weight: 500; }
 
-        /* --- КАТАЛОГ ПРЕДМЕТОВ С HOVER --- */
+        /* --- КАТАЛОГ ПРЕДМЕТОВ (ОБНОВЛЕННЫЙ) --- */
         .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .product { position: relative; overflow: hidden; border-radius: 24px; background: transparent; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s var(--easing); cursor: pointer; display: block; }
         .product:hover { transform: translateY(-10px); background: #080808; border-color: rgba(255,255,255,0.2); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-        .product-img { height: 380px; overflow: hidden; background: #080808; border-radius: 24px 24px 0 0; }
-        .product:hover .spb-art:before { transform: scale(1.08); }
+        
+        .product-img { height: 380px; overflow: hidden; background: #080808; border-radius: 24px 24px 0 0; position: relative; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--easing); }
+        .product:hover .product-img img { transform: scale(1.08); }
         
         .product-info { padding: 24px; transition: transform 0.4s var(--easing), opacity 0.4s; }
         .product:hover .product-info { transform: translateY(15px); opacity: 0; }
@@ -303,10 +234,56 @@
         .product:hover .hover-overlay { opacity: 1; }
         .product:hover .hover-overlay span { background: #fff; color: #000; border-color: #fff; transform: scale(1.05); }
 
-        .product-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
-        .product h3 { font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pure); }
-        .price { color: var(--muted); font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; }
-        .product p { color: var(--muted2); font-size: 15px; line-height: 1.6; font-weight: 500; }
+        .product-top { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .product h3 { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pure); line-height: 1.4; }
+        .price { color: var(--muted); font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 16px; margin-top: auto; }
+        .product p { color: var(--muted2); font-size: 14px; line-height: 1.6; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* --- МОДАЛЬНОЕ ОКНО ПРЕДМЕТА --- */
+        .modal {
+            position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center;
+            background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            opacity: 0; transition: opacity 0.4s var(--easing); padding: 24px;
+        }
+        .modal.active { display: flex; opacity: 1; }
+        
+        .modal-content {
+            background: #0d0d0d; width: 100%; max-width: 1100px; max-height: 90vh; border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+            display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; position: relative;
+            transform: translateY(40px) scale(0.95); transition: transform 0.5s var(--easing);
+        }
+        .modal.active .modal-content { transform: translateY(0) scale(1); }
+        
+        .modal-close {
+            position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 24px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.3s;
+        }
+        .modal-close:hover { background: #fff; color: #000; transform: rotate(90deg); }
+        
+        /* Левая часть - галерея */
+        .modal-gallery { display: flex; flex-direction: column; background: #050505; }
+        .modal-main-img { width: 100%; height: 50vh; min-height: 400px; object-fit: cover; }
+        .modal-thumbs { display: flex; gap: 8px; padding: 16px; overflow-x: auto; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+        .modal-thumbs::-webkit-scrollbar { height: 4px; }
+        .modal-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        .modal-thumb { width: 80px; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.5; transition: all 0.3s; border: 2px solid transparent; flex-shrink: 0; }
+        .modal-thumb:hover { opacity: 0.8; }
+        .modal-thumb.active { opacity: 1; border-color: #fff; }
+        
+        /* Правая часть - инфо */
+        .modal-info { padding: 48px; display: flex; flex-direction: column; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
+        .modal-info::-webkit-scrollbar { width: 4px; }
+        .modal-info::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        
+        .modal-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.1; color: var(--pure); }
+        .modal-price { font-family: 'Unbounded', sans-serif; font-size: 20px; font-weight: 700; color: var(--pure); margin-bottom: 32px; }
+        .modal-desc { font-size: 16px; line-height: 1.7; color: var(--muted); margin-bottom: 32px; font-weight: 500; }
+        .modal-comp { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 40px; }
+        .modal-comp strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+        .modal-comp p { font-size: 14px; color: var(--muted2); line-height: 1.5; font-weight: 500; }
+        .modal-btn { margin-top: auto; }
 
         /* --- ВИЗУАЛЬНЫЙ КОД --- */
         .gallery-grid { display: grid; grid-template-columns: 1fr 1.3fr 1fr 1.3fr; gap: 20px; align-items: stretch; }
@@ -342,18 +319,8 @@
         footer { padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.05); }
         .footer-row { display: flex; justify-content: space-between; align-items: center; }
         
-        .footer-pulse {
-            font-family: 'Unbounded', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.25em;
-            color: var(--pure);
-            animation: pulse-glow 4s ease-in-out infinite;
-        }
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.4; text-shadow: 0 0 0 rgba(255,255,255,0); }
-            50% { opacity: 1; text-shadow: 0 0 15px rgba(255,255,255,0.5); }
-        }
+        .footer-pulse { font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; color: var(--pure); animation: pulse-glow 4s ease-in-out infinite; }
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.4; text-shadow: 0 0 0 rgba(255,255,255,0); } 50% { opacity: 1; text-shadow: 0 0 15px rgba(255,255,255,0.5); } }
 
         /* --- АНИМАЦИИ ПОЯВЛЕНИЯ --- */
         .reveal { opacity: 0; transform: translateY(40px); animation: reveal 1s var(--easing) forwards; }
@@ -373,6 +340,11 @@
             .products { grid-template-columns: repeat(2, 1fr); }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .gallery-grid .spb-art, .gallery-grid .spb-art:nth-child(even) { height: 400px; min-height: 400px; }
+            
+            .modal-content { grid-template-columns: 1fr; max-height: 95vh; overflow-y: auto; }
+            .modal-gallery { max-height: auto; }
+            .modal-main-img { height: 40vh; min-height: 300px; }
+            .modal-info { padding: 32px; overflow-y: visible; }
         }
 
         @media(max-width: 768px) {
@@ -385,7 +357,7 @@
             .brand-text span { display: none; }
             .nav-cta { padding: 12px 20px; font-size: 10px; }
             .nav-cta svg { width: 14px; height: 14px; }
-            .fashion-tag { right: 160px; height: 70px; } /* Уменьшаем бирку на телефоне */
+            .fashion-tag { right: 160px; height: 70px; }
             
             .hero { padding-top: 140px; padding-bottom: 60px; }
             .hero-actions .btn { width: 100%; }
@@ -408,6 +380,12 @@
             .gallery-grid .spb-art, .gallery-grid .spb-art:nth-child(even) { height: 380px; min-height: 380px; }
             
             .footer-row { flex-direction: column; gap: 24px; text-align: center; }
+            
+            .modal { padding: 16px; }
+            .modal-content { border-radius: 24px; }
+            .modal-close { top: 16px; right: 16px; width: 36px; height: 36px; font-size: 20px; background: rgba(0,0,0,0.5); }
+            .modal-title { font-size: 28px; }
+            .modal-info { padding: 24px; }
         }
     </style>
 </head>
@@ -427,7 +405,7 @@
                 <a href="#about">О нас</a>
                 <a href="#collections">Капсулы</a>
                 <a href="#showroom">Шоурум</a>
-                <a href="#catalog">Предметы</a>
+                <a href="#catalog">Витрина</a>
                 <a href="#contacts">Контакты</a>
             </nav>
             <a href="#booking" class="nav-cta">
@@ -439,7 +417,6 @@
                 Записаться
             </a>
         </div>
-        <!-- Декоративная бирка -->
         <div class="fashion-tag">
             <span>DROP 1</span>
         </div>
@@ -447,7 +424,7 @@
 </header>
 
 <main id="top">
-    <!-- СЕКЦИЯ 1: ЧЕРНЫЙ ФОН (ГЛАВНЫЙ ЭКРАН) -->
+    <!-- СЕКЦИЯ 1: ГЛАВНЫЙ ЭКРАН -->
     <section class="hero">
         <div class="container hero-grid">
             <div>
@@ -455,7 +432,7 @@
                 <h1 class="reveal delay-1">SaintPerpetual <span>вечный код Петербурга</span></h1>
                 <p class="lead reveal delay-2">Мы — Сами Питерские. Создаём одежду для мечтателей и создателей: для тех, кто вглядывается в линии города и видит в них отражение собственной души.</p>
                 <div class="hero-actions reveal delay-3">
-                    <a class="btn btn-primary" href="#collections">Смотреть капсулы</a>
+                    <a class="btn btn-primary" href="#catalog">Смотреть витрину</a>
                     <a class="btn btn-ghost" href="#about">Прочитать о нас</a>
                 </div>
             </div>
@@ -485,7 +462,7 @@
         </div>
     </div>
 
-    <!-- СЕКЦИЯ 2: БЕЛЫЙ ФОН (О НАС) -->
+    <!-- СЕКЦИЯ 2: О НАС -->
     <section class="section bg-light" id="about">
         <div class="container about-grid">
             <div class="about-text">
@@ -500,7 +477,7 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: ЧЕРНЫЙ ФОН (КАПСУЛЫ) -->
+    <!-- СЕКЦИЯ 3: КАПСУЛЫ -->
     <section class="section" id="collections">
         <div class="container">
             <div class="section-head">
@@ -557,20 +534,11 @@
                     </div>
                     <div class="hover-overlay"><span>Перейти к предметам</span></div>
                 </a>
-                <a href="#catalog" class="collection-card">
-                    <div class="spb-art art-neva"></div>
-                    <div class="collection-info">
-                        <span class="tag">capsule 06</span>
-                        <h3>Холодная Нева</h3>
-                        <p>Динамика воды и ветра. Вещи, защищающие от стихии, но сохраняющие элегантность.</p>
-                    </div>
-                    <div class="hover-overlay"><span>Перейти к предметам</span></div>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 4: БЕЛЫЙ ФОН (ШОУРУМ) -->
+    <!-- СЕКЦИЯ 4: ШОУРУМ -->
     <section class="section bg-light" id="showroom">
         <div class="container showroom">
             <div class="showroom-panel">
@@ -607,66 +575,25 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 5: ЧЕРНЫЙ ФОН (КАТАЛОГ ПРЕДМЕТОВ) -->
+    <!-- СЕКЦИЯ 5: ВИТРИНА (ДИНАМИЧЕСКИЙ КАТАЛОГ) -->
     <section class="section" id="catalog">
         <div class="container">
             <div class="section-head">
                 <div>
-                    <div class="section-kicker">Предметы SaintPerpetual</div>
-                    <h2>Форма, стиль, в которых продолжается наследие.</h2>
+                    <div class="section-kicker">Витрина SaintPerpetual</div>
+                    <h2>Форма и стиль, в которых продолжается наследие.</h2>
                 </div>
-                <p class="section-copy">Здесь могут быть реальные изделия коллекции. Сейчас карточки оформлены через образы Санкт-Петербурга, чтобы визуально держать философию бренда.</p>
+                <p class="section-copy">Ознакомьтесь с нашими предметами. Кликните на любую вещь, чтобы увидеть детальные фотографии и полное описание.</p>
             </div>
-            <div class="products">
-                <a href="#booking" class="product">
-                    <div class="product-img"><div class="spb-art art-neva"></div></div>
-                    <div class="product-info">
-                        <div class="product-top">
-                            <h3>Гранит</h3>
-                            <span class="price">19 900 ₽</span>
-                        </div>
-                        <p>Строгая вертикаль, плотная форма, ощущение вечной архитектуры.</p>
-                    </div>
-                    <div class="hover-overlay"><span>Посмотреть</span></div>
-                </a>
-                <a href="#booking" class="product">
-                    <div class="product-img"><div class="spb-art art-bridge"></div></div>
-                    <div class="product-info">
-                        <div class="product-top">
-                            <h3>Мосты</h3>
-                            <span class="price">8 900 ₽</span>
-                        </div>
-                        <p>Линия соединения: между городом, человеком и его внутренним состоянием.</p>
-                    </div>
-                    <div class="hover-overlay"><span>Посмотреть</span></div>
-                </a>
-                <a href="#booking" class="product">
-                    <div class="product-img"><div class="spb-art art-cathedral"></div></div>
-                    <div class="product-info">
-                        <div class="product-top">
-                            <h3>Колоннада</h3>
-                            <span class="price">10 500 ₽</span>
-                        </div>
-                        <p>Чистая пропорция, уверенная посадка, визуальная собранность.</p>
-                    </div>
-                    <div class="hover-overlay"><span>Посмотреть</span></div>
-                </a>
-                <a href="#booking" class="product">
-                    <div class="product-img"><div class="spb-art art-canal"></div></div>
-                    <div class="product-info">
-                        <div class="product-top">
-                            <h3>Каналы</h3>
-                            <span class="price">16 700 ₽</span>
-                        </div>
-                        <p>Холодная пластика воды, глубина и спокойная сила северного города.</p>
-                    </div>
-                    <div class="hover-overlay"><span>Посмотреть</span></div>
-                </a>
+            
+            <!-- Контейнер для карточек (Заполняется через JavaScript) -->
+            <div class="products" id="catalog-container">
+                <!-- Сюда вставятся товары -->
             </div>
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 6: БЕЛЫЙ ФОН (ВИЗУАЛЬНЫЙ КОД) -->
+    <!-- СЕКЦИЯ 6: ВИЗУАЛЬНЫЙ КОД -->
     <section class="section bg-light city-gallery">
         <div class="container">
             <div class="section-head">
@@ -686,13 +613,13 @@
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 7: ЧЕРНЫЙ ФОН (ЦИТАТА) -->
+    <!-- СЕКЦИЯ 7: ЦИТАТА -->
     <section class="quote">
         <p>«SaintPerpetual — это наследие, воплощённое в ткани и форме. Вечная история вдохновения, начатая в Санкт-Петербурге.»</p>
         <span>Сами Питерские</span>
     </section>
 
-    <!-- СЕКЦИЯ 8: БЕЛЫЙ ФОН (КОНТАКТЫ И ЗАПИСЬ) -->
+    <!-- СЕКЦИЯ 8: КОНТАКТЫ И ЗАПИСЬ -->
     <section class="section bg-light" id="contacts">
         <div class="container contact">
             <div class="contact-card">
@@ -739,6 +666,31 @@
     </div>
 </footer>
 
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ТОВАРА -->
+<div class="modal" id="product-modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        
+        <div class="modal-gallery">
+            <img src="" alt="Product Image" class="modal-main-img" id="modal-main-img">
+            <div class="modal-thumbs" id="modal-thumbs">
+                <!-- Миниатюры вставляются сюда -->
+            </div>
+        </div>
+        
+        <div class="modal-info">
+            <h3 class="modal-title" id="modal-title">Название</h3>
+            <div class="modal-price" id="modal-price">0 ₽</div>
+            <div class="modal-desc" id="modal-desc">Описание...</div>
+            <div class="modal-comp">
+                <strong>Состав и Детали</strong>
+                <p id="modal-comp-text">Состав...</p>
+            </div>
+            <button class="btn btn-primary modal-btn" style="width: 100%; height: 64px;" onclick="orderFromModal()">Заказать этот предмет</button>
+        </div>
+    </div>
+</div>
+
 <script>
     // --- Плавное исчезновение шапки при скролле вниз ---
     let lastScrollY = window.scrollY;
@@ -767,17 +719,8 @@
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
     });
-    
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-    
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.classList.remove('active');
-    });
-    
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('active'); });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('active'); });
     slider.addEventListener('mousemove', (e) => {
         if(!isDown) return;
         e.preventDefault();
@@ -790,13 +733,272 @@
     const collectionLinks = document.querySelectorAll('.collection-card');
     collectionLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            if(isDragging) {
-                e.preventDefault();
-            }
+            if(isDragging) e.preventDefault();
         });
     });
 
-    // --- Интеграция с Telegram ---
+    // --- БАЗА ДАННЫХ ТОВАРОВ (ВИТРИНА) ---
+    const catalogData = [
+        {
+            id: 1,
+            title: "Трикотажная рубашка (Бордо)",
+            price: "13 000 ₽",
+            short: "Классический силуэт и современные детали с контрастной отстрочкой.",
+            desc: "Трикотажная рубашка сочетает в себе классический силуэт и современные детали. Изготовленная из плотного, но мягкого трикотажа, она идеально подходит для создания многослойных образов. Накладные карманы на груди добавляют функциональности и практичности, а контрастная красная отстрочка подчеркивает силуэт. Оригинальные пуговицы завершают образ, делая эту рубашку незаменимой в вашем гардеробе.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/fd3sds3h/IMG-3946.jpg", "https://i.ibb.co/9HBp10Tm/IMG-4001.jpg", "https://i.ibb.co/fzdp5PNd/IMG-3939.jpg",
+                "https://i.ibb.co/wZrjCPjC/IMG-3949.jpg", "https://i.ibb.co/Q74Fnv0w/IMG-3941.jpg", "https://i.ibb.co/WCMVfg1/IMG-4004.jpg",
+                "https://i.ibb.co/nqyrQHMq/IMG-4009.jpg", "https://i.ibb.co/QvvSy3vq/IMG-3999.jpg"
+            ]
+        },
+        {
+            id: 2,
+            title: "Штаны свободного кроя (Орхидея)",
+            price: "12 000 ₽",
+            short: "Прямой силуэт со слегка объемной формой. Цвет - лиловый орхидея.",
+            desc: "На фотографиях представлены штаны свободного кроя, выполненные из плотного трикотажа. У них прямой силуэт, но благодаря специальным швам штанины имеют слегка объемную форму. Эластичный пояс обеспечивает комфортную посадку.<br><br>Имеются боковые карманы, а также задний накладной карман с небольшой вышивкой, логотип бренда «СамиПитерские» - «SaintPerpetual».<br><br>Длина штанов - до щиколотки или чуть ниже. Эти штаны выглядят комфортно и модно одновременно. Они отлично подойдут для создания расслабленных, но стильных образов в стиле casual или athleisure.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/cKX6MzZT/IMG-3931.jpg", "https://i.ibb.co/HfGqwG2f/IMG-3916.jpg", "https://i.ibb.co/qMRvNtDT/IMG-3923.jpg",
+                "https://i.ibb.co/LhBpk5pW/IMG-3926.jpg", "https://i.ibb.co/F4L8jNcT/IMG-4007.jpg", "https://i.ibb.co/JRGw5dVF/IMG-3925.jpg",
+                "https://i.ibb.co/8nLj0vKj/IMG-3919.jpg", "https://i.ibb.co/PZJjw1zQ/IMG-3934.jpg"
+            ]
+        },
+        {
+            id: 3,
+            title: "Комбинезон «SP»",
+            price: "17 000 ₽",
+            short: "Премиальное решение для жизни в движении. Защита от ветра и дождя.",
+            desc: "Комбинезон «SP» — это не просто одежда, это премиальное решение для жизни в движении. Идеален для активного отдыха, путешествий и городской среды. Защита от ветра, дождя и снега в любой ситуации!<br><br>Высокотехнологичное покрытие из термопластичного полиуретана (ТПУ) гарантирует водо- и ветронепроницаемость. 10 000 мм — показатель водоотталкивающей способности. 3 000 г/м²/24 ч — показатель паропроницаемости (позволяет коже «дышать»).",
+            comp: "100% полиэстер. Плотность: 325 г/м². Обработка: ТПУ (10 000/3 000). Свойства: Ветрозащитная, Водоотталкивающая, Термозащитная.",
+            images: [
+                "https://i.ibb.co/rGD1MfZV/IMG-4116.jpg", "https://i.ibb.co/TMjBZsmz/IMG-3693.jpg", "https://i.ibb.co/Fb9wQcHz/IMG-3688.jpg",
+                "https://i.ibb.co/fz3B54s3/IMG-3720-1.jpg", "https://i.ibb.co/LzgVCfWz/IMG-3694.jpg", "https://i.ibb.co/hJt5Xq0q/IMG-4114.jpg",
+                "https://i.ibb.co/s9pDmnNn/IMG-4124.jpg", "https://i.ibb.co/RpmJk4fn/IMG-4106.jpg", "https://i.ibb.co/ycpNPXWK/IMG-4117.jpg",
+                "https://i.ibb.co/LzW1kkKB/IMG-3690.jpg", "https://i.ibb.co/g52TPxy/IMG-3691.jpg"
+            ]
+        },
+        {
+            id: 4,
+            title: "Унисекс Свитшот",
+            price: "10 000 ₽",
+            short: "Мягкий хлопковый трикотаж, воротник-стойка на молнии, цветовые блоки.",
+            desc: "Сочетайте комфорт и стиль с этим унисекс свитшотом. Изготовлен из мягкого и приятного к телу хлопкового трикотажа. Воротник-стойка на молнии позволяет регулировать тепло.<br><br>Оригинальный дизайн с цветовыми блоками и вышитым логотипом делает его запоминающимся. Универсальный крой подходит для любого типа фигуры. Отличный выбор для повседневной носки и активного отдыха.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/9HsVfjHr/IMG-4016.jpg", "https://i.ibb.co/zHN0mNmz/IMG-4034.jpg", "https://i.ibb.co/qb39r4L/IMG-4031.jpg",
+                "https://i.ibb.co/ZpHYm0vP/IMG-4010.jpg", "https://i.ibb.co/DHjRGTHs/IMG-4026.jpg", "https://i.ibb.co/kg4qwpyx/IMG-4014.jpg",
+                "https://i.ibb.co/d07jLDBs/IMG-4027.jpg", "https://i.ibb.co/MkQYmmvP/IMG-4018.jpg"
+            ]
+        },
+        {
+            id: 5,
+            title: "Штаны «Классика спорта»",
+            price: "8 500 ₽",
+            short: "Трикотажные штаны изготовленные из плотного, но мягкого трикотажа.",
+            desc: "Трикотажные штаны Классика спорта изготовленная из плотного, но мягкого трикотажа. Отлично подходят как для активных передвижений по городу, так и для расслабленного стиля.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/fzHkYLqW/IMG-3752.jpg", "https://i.ibb.co/KzK5XPF0/IMG-3767.jpg", "https://i.ibb.co/wZvBp1XY/IMG-3776.jpg",
+                "https://i.ibb.co/gZsXkBRF/IMG-3749.jpg", "https://i.ibb.co/WW4w1WXZ/IMG-3773.jpg", "https://i.ibb.co/RTCGct8R/IMG-3744.jpg"
+            ]
+        },
+        {
+            id: 6,
+            title: "Трикотажная рубашка",
+            price: "13 000 ₽",
+            short: "Классический силуэт и современные детали.",
+            desc: "Трикотажная рубашка сочетает в себе классический силуэт и современные детали. Изготовленная из плотного, но мягкого трикотажа, она идеально подходит для создания многослойных образов. Накладные карманы на груди добавляют функциональности и практичности, а контрастная отстрочка подчеркивает силуэт. Оригинальные пуговицы завершают образ.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/HD6y5VnF/IMG-3727.jpg", "https://i.ibb.co/MygRRxCX/IMG-3742.jpg", "https://i.ibb.co/mFzB663c/IMG-3725.jpg",
+                "https://i.ibb.co/KcsjVHx8/IMG-3722.jpg", "https://i.ibb.co/WNHs7sj6/IMG-3740.jpg", "https://i.ibb.co/ksV6Lv0M/IMG-3728.jpg",
+                "https://i.ibb.co/Mx6VWJMn/IMG-3735.jpg", "https://i.ibb.co/XZN8zYXF/IMG-3731.jpg"
+            ]
+        },
+        {
+            id: 7,
+            title: "Штаны свободного кроя (Черные)",
+            price: "12 000 ₽",
+            short: "Прямой силуэт со слегка объемной формой. Базовый черный цвет.",
+            desc: "На фотографиях представлены штаны свободного кроя, выполненные из плотного трикотажа. Цвет - черный. У них прямой силуэт, но благодаря специальным швам штанины имеют слегка объемную форму. Эластичный пояс обеспечивает комфортную посадку.<br><br>Имеются боковые карманы, а также задний накладной карман с небольшой вышивкой, логотип бренда «СамиПитерские» - «SaintPerpetual».",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/jP53wBCG/IMG-3801.jpg", "https://i.ibb.co/6cQqvxyP/IMG-3793.jpg", "https://i.ibb.co/hR5SjL9j/IMG-3798.jpg",
+                "https://i.ibb.co/DDyh7Ynz/IMG-3796.jpg", "https://i.ibb.co/gbX09gtd/IMG-3799.jpg"
+            ]
+        },
+        {
+            id: 8,
+            title: "Бомбер «ВОЗРОЖДЕНИЕ» (Черный)",
+            price: "42 000 ₽",
+            short: "Двухсторонняя куртка: эко-кожа в стиле гранж и премиальный трикотаж.",
+            desc: "Двухсторонняя куртка-бомбер. <br><br>1) Одна сторона выполнена из высококачественной и технологичной искусственной кожи в стиле гранж с характерными рельефами. Самая заметная деталь - большая вышивка на спине и вышивка «Сами-Питерские» спереди на левой груди.<br><br>2) Вторая сторона трикотажная цвета какао, выполнена из премиальной ткани. Материал очень мягкий, не мнется, не пилингуется, отлично держит форму. Присутствует вышивка на груди.",
+            comp: "Кожа: 100% ПУ (лицевая); 100% вискоза (изнаночная). Трикотаж: 72.5% хлопок, 21.5% полиэстер, 6% лайкра.",
+            images: [
+                "https://i.ibb.co/v4znXvpG/IMG-3856.jpg", "https://i.ibb.co/YFqpDBCt/IMG-3852.jpg", "https://i.ibb.co/pBRytKz6/IMG-3842.jpg",
+                "https://i.ibb.co/p6Lmgs90/IMG-3849.jpg", "https://i.ibb.co/GQwjdZ6J/IMG-3846.jpg", "https://i.ibb.co/jvhZM2Q7/IMG-3836.jpg",
+                "https://i.ibb.co/qM20wM2Y/IMG-3839.jpg", "https://i.ibb.co/bYHD1sG/IMG-3833.jpg", "https://i.ibb.co/GS0fNpL/IMG-3959.jpg",
+                "https://i.ibb.co/vvBDfYhP/IMG-3967.jpg", "https://i.ibb.co/0RPYqZYb/IMG-3958.jpg", "https://i.ibb.co/S4B7MPNB/IMG-3869.jpg",
+                "https://i.ibb.co/gnNKPCx/IMG-3957.jpg", "https://i.ibb.co/W4spQJmd/IMG-3867.jpg", "https://i.ibb.co/v6QQw9pr/IMG-3954.jpg"
+            ]
+        },
+        {
+            id: 9,
+            title: "Бомбер «ВОЗРОЖДЕНИЕ» (Коричневый)",
+            price: "42 000 ₽",
+            short: "Двухсторонняя куртка: коричневая эко-кожа и синий премиальный трикотаж.",
+            desc: "Двухсторонняя куртка-бомбер. <br><br>1) Одна сторона выполнена из высококачественной и технологичной искусственной кожи коричневого цвета в стиле гранж с характерными рельефами. Большая вышивка на спине и спереди на левой груди.<br><br>2) Вторая сторона трикотажная синего цвета, выполнена из премиальной ткани. Материал очень мягкий, не мнется, отлично держит форму. На трикотажной стороне также присутствует вышивка.",
+            comp: "Кожа: 100% ПУ (лицевая); 100% вискоза (изнаночная). Трикотаж: 72.5% хлопок, 21.5% полиэстер, 6% лайкра.",
+            images: [
+                "https://i.ibb.co/JjhRbFQc/IMG-3908.jpg", "https://i.ibb.co/nNHfthSJ/IMG-3897.jpg", "https://i.ibb.co/21zQ7k7q/IMG-3888.jpg",
+                "https://i.ibb.co/fGYRMq2N/IMG-3893.jpg", "https://i.ibb.co/KjRhM1BP/IMG-3889.jpg", "https://i.ibb.co/ynbM9fVr/IMG-3903.jpg",
+                "https://i.ibb.co/KxQJ3RqD/IMG-3894.jpg", "https://i.ibb.co/8DCWLF0m/IMG-3886.jpg"
+            ]
+        },
+        {
+            id: 10,
+            title: "Дождевик «Мясник 3000»",
+            price: "24 500 ₽",
+            short: "Уникальный термохромный плащ. Меняет цвет от температуры.",
+            desc: "Уникальный дождевик от Сами Питерские «Мясник 3000». Создан для истинных ценителей стиля. Плащ выполнен из уникальной термохромной ткани, которая меняет свой цвет в зависимости от температуры (от тепла тела или солнца). Вставка из СОФТ-ШЕЛЛ.<br><br>Когда вы находитесь в прохладе, ткань возвращается к своему первоначальному цвету. Водонепроницаемость позволяет чувствовать себя комфортно в любую погоду. Два вида внутренней расцветки: Розовый неон и Белый.",
+            comp: "Термохром: 100% полиэстер (150г/кв.м). Софт-шелл: 100% полиэстер (325г/кв.м), обработка ТПУ 10000/3000. Ветрозащитная, водоотталкивающая, термозащитная.",
+            images: [
+                "https://i.ibb.co/xSC6F43R/IMG-4043.jpg", "https://i.ibb.co/vvVfmMrz/IMG-4082.jpg", "https://i.ibb.co/d454g6kQ/photo-2025-08-24-03-16-33.jpg",
+                "https://i.ibb.co/kgPGkrSd/IMG-4074.jpg", "https://i.ibb.co/mfsjqHm/IMG-4064.jpg", "https://i.ibb.co/4nsfQGN5/IMG-4059.jpg",
+                "https://i.ibb.co/LXR9F9Wh/IMG-4068.jpg", "https://i.ibb.co/rGv7V69g/IMG-4083.jpg", "https://i.ibb.co/wx5rQqx/IMG-4051.jpg",
+                "https://i.ibb.co/NgW19k64/IMG-4079.jpg", "https://i.ibb.co/Tx3gVvjk/IMG-4067.jpg", "https://i.ibb.co/1y9pGgp/IMG-4062.jpg"
+            ]
+        },
+        {
+            id: 11,
+            title: "Худи SaintPerpetual",
+            price: "15 000 ₽",
+            short: "Черная толстовка с крупной геральдической вышивкой.",
+            desc: "Черная толстовка/худи с капюшоном SaintPerpetual с оригинальным дизайном. Толстый, плотный трикотаж, рукава реглан, большой удобный капюшон и короткая молния до середины груди.<br><br>На груди присутствует горизонтальная карман-вставка и регулируемая кулиска по низу. На спине расположена крупная вышивка графической композиции, стилизованной под геральдический символ. Отличный выбор для streetwear или casual.",
+            comp: "72.5% хлопок, 21.5% полиэстер, 6% лайкра (спандекс)",
+            images: [
+                "https://i.ibb.co/tPpXSbHz/IMG-4092.jpg", "https://i.ibb.co/99zXvXyQ/IMG-4087.jpg", "https://i.ibb.co/tpvhQbck/IMG-4090.jpg",
+                "https://i.ibb.co/pvL1cGGV/IMG-4091.jpg", "https://i.ibb.co/sdtt0c5s/IMG-4098.jpg", "https://i.ibb.co/KcjDfj8s/IMG-4094.jpg",
+                "https://i.ibb.co/R4dZ1TZP/IMG-4105.jpg"
+            ]
+        },
+        {
+            id: 12,
+            title: "Футболка SP (Белая)",
+            price: "4 950 ₽",
+            short: "Лаконичный графический принт и свободный крой.",
+            desc: "Футболка с лаконичным графическим принтом — идеальный способ выразить себя без лишних деталей. Свободный крой. Мягкая, дышащая ткань из 100% хлопка. Добавьте немного минимализма в свой гардероб!",
+            comp: "100% Хлопок",
+            images: [
+                "https://i.ibb.co/ccDZ6mW6/IMG-3917.jpg", "https://i.ibb.co/hx0gSFWq/IMG-3913.jpg", "https://i.ibb.co/fVhnhWP3/IMG-3791.jpg",
+                "https://i.ibb.co/4Zvv5xVK/IMG-3786.jpg", "https://i.ibb.co/B5qGJbGK/IMG-3910.jpg", "https://i.ibb.co/ZRwxMDqg/IMG-3936.jpg",
+                "https://i.ibb.co/C3KpCQxt/IMG-3914.jpg", "https://i.ibb.co/fGHnj7qZ/IMG-3789.jpg"
+            ]
+        },
+        {
+            id: 13,
+            title: "Футболка «Империя»",
+            price: "7 900 ₽",
+            short: "Высокое горло, массивный рукав и эффектный принт на спине.",
+            desc: "Черная оверсайз футболка «Империя» с высоким горлом и массивным коротким рукавом. Минималистичный логотип спереди и эффектный принт на спине (шелкография). Комфортный крой и мягкий материал.",
+            comp: "100% Хлопок",
+            images: [
+                "https://i.ibb.co/LDGmg9DT/IMG-3878.jpg", "https://i.ibb.co/JFkkVdTv/IMG-3974.jpg", "https://i.ibb.co/chFkpW9x/IMG-3979.jpg",
+                "https://i.ibb.co/XfKp4N4s/IMG-3871.jpg", "https://i.ibb.co/tp49YzZB/IMG-3975.jpg", "https://i.ibb.co/dwYQZHzh/IMG-3977.jpg",
+                "https://i.ibb.co/mCV6GyFD/IMG-3884.jpg", "https://i.ibb.co/KjkrtNpZ/IMG-3881.jpg", "https://i.ibb.co/zWr15Qy9/IMG-3972.jpg",
+                "https://i.ibb.co/MkWH1ZBH/IMG-3973.jpg", "https://i.ibb.co/YFRnDLFC/IMG-3873.jpg", "https://i.ibb.co/tTZ927K9/IMG-3876.jpg",
+                "https://i.ibb.co/N6G6fhLC/output-17.png", "https://i.ibb.co/9m53pfmV/output-16.png", "https://i.ibb.co/Hfm9mqD9/fixed-image-0-4.png"
+            ]
+        },
+        {
+            id: 14,
+            title: "Футболка с геральдикой",
+            price: "4 950 ₽",
+            short: "Черная футболка с крупным принтом геральдического символа.",
+            desc: "Черная футболка. Спереди расположен крупный принт графической композиции, стилизованной под геральдический символ. Свободный крой. Мягкая, дышащая ткань.",
+            comp: "100% Хлопок",
+            images: [
+                "https://i.ibb.co/hx2MZkm5/IMG-3810.jpg", "https://i.ibb.co/hxZ2nXqp/IMG-3820.jpg", "https://i.ibb.co/wv1S7tL/IMG-3803.jpg",
+                "https://i.ibb.co/hx0zYcft/IMG-3812.jpg", "https://i.ibb.co/SX8SKWCV/IMG-3817.jpg", "https://i.ibb.co/cSwsqKrx/IMG-3808.jpg",
+                "https://i.ibb.co/Jw0SJB5h/IMG-3819.jpg", "https://i.ibb.co/s9D1bVZT/IMG-3807.jpg", "https://i.ibb.co/qYdCfr3g/IMG-3813.jpg"
+            ]
+        }
+    ];
+
+    // --- ГЕНЕРАЦИЯ ВИТРИНЫ ---
+    const catalogContainer = document.getElementById('catalog-container');
+    
+    catalogData.forEach(item => {
+        const coverImage = item.images[0];
+        const cardHTML = `
+            <div class="product" onclick="openModal(${item.id})">
+                <div class="product-img">
+                    <img src="${coverImage}" alt="${item.title}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <div class="product-top">
+                        <h3>${item.title}</h3>
+                        <span class="price">${item.price}</span>
+                    </div>
+                    <p>${item.short}</p>
+                </div>
+                <div class="hover-overlay"><span>Смотреть детали</span></div>
+            </div>
+        `;
+        catalogContainer.innerHTML += cardHTML;
+    });
+
+    // --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
+    let currentActiveProduct = null;
+    const modal = document.getElementById('product-modal');
+    const mainImg = document.getElementById('modal-main-img');
+    const thumbsContainer = document.getElementById('modal-thumbs');
+
+    function openModal(id) {
+        const product = catalogData.find(p => p.id === id);
+        if(!product) return;
+        currentActiveProduct = product;
+
+        // Заполняем тексты
+        document.getElementById('modal-title').innerText = product.title;
+        document.getElementById('modal-price').innerText = product.price;
+        document.getElementById('modal-desc').innerHTML = product.desc;
+        document.getElementById('modal-comp-text').innerText = product.comp;
+
+        // Заполняем фото
+        mainImg.src = product.images[0];
+        thumbsContainer.innerHTML = '';
+        
+        product.images.forEach((imgUrl, index) => {
+            const thumb = document.createElement('img');
+            thumb.src = imgUrl;
+            thumb.className = `modal-thumb ${index === 0 ? 'active' : ''}`;
+            thumb.onclick = () => {
+                mainImg.src = imgUrl;
+                document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            };
+            thumbsContainer.appendChild(thumb);
+        });
+
+        // Показываем
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Блокируем скролл сайта
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Возвращаем скролл
+    }
+
+    // Закрытие по клику вне контента
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // --- ОТПРАВКА В ТЕЛЕГРАМ ---
     function sendToTelegram(event) {
         event.preventDefault(); 
         const name = document.getElementById('tgName').value;
@@ -808,6 +1010,14 @@
         
         window.open(`https://t.me/SaintGruz?text=${encodedText}`, '_blank');
         document.getElementById('tgForm').reset();
+    }
+
+    // Заказ конкретного предмета из модального окна
+    function orderFromModal() {
+        if(!currentActiveProduct) return;
+        const message = `🖤 Хочу заказать предмет из витрины SaintPerpetual 🖤\n\n🧥 Название: ${currentActiveProduct.title}\n💳 Цена: ${currentActiveProduct.price}\n\nПодскажите, как оформить заказ?`;
+        const encodedText = encodeURIComponent(message);
+        window.open(`https://t.me/SaintGruz?text=${encodedText}`, '_blank');
     }
 </script>
 
