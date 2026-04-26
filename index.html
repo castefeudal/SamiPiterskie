@@ -74,15 +74,6 @@
         .nav-cta:hover { transform: scale(1.03); background: #e8e8e8; box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
         .nav-cta:hover svg { transform: scale(1.1) rotate(-8deg); }
 
-        .fashion-tag {
-            position: absolute; top: 72px; right: 220px; width: 34px; height: 90px;
-            background: var(--red); border-radius: 0 0 4px 4px; display: flex; flex-direction: column; align-items: center; padding-top: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-            transform-origin: top center; animation: swing 6s ease-in-out infinite; z-index: 90; pointer-events: none;
-        }
-        .fashion-tag:before { content: ""; width: 8px; height: 8px; background: var(--black); border-radius: 50%; box-shadow: inset 0 1px 2px rgba(255,255,255,0.3); }
-        .fashion-tag span { margin-top: auto; margin-bottom: 14px; writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Unbounded', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; color: #fff; }
-        @keyframes swing { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
-
         /* --- SVG АРТЫ --- */
         .spb-art { position: relative; width: 100%; height: 100%; min-height: inherit; overflow: hidden; background: radial-gradient(circle at 76% 18%, rgba(255,255,255,.05), transparent 30%), linear-gradient(145deg, rgba(255,255,255,.03), rgba(255,255,255,0) 50%), #030303; transition: transform 1s var(--easing); }
         .spb-art:before { content: ""; position: absolute; inset: -5%; background: var(--art) center/cover no-repeat; opacity: 0.85; filter: grayscale(0.2) contrast(1.1); transition: transform 1.2s var(--easing); }
@@ -219,16 +210,20 @@
         .feature strong { display: block; margin-bottom: 6px; font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; }
         .feature span { color: rgba(0,0,0,0.75); line-height: 1.5; font-size: 15px; font-weight: 500; }
 
-        /* --- КАТАЛОГ ПРЕДМЕТОВ (ОБНОВЛЕННЫЙ) --- */
+        /* --- КАТАЛОГ ПРЕДМЕТОВ (ОБНОВЛЕННЫЙ, ГИБКИЙ) --- */
         .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .product { position: relative; overflow: hidden; border-radius: 24px; background: transparent; border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s var(--easing); cursor: pointer; display: block; }
+        .product { 
+            position: relative; border-radius: 24px; background: transparent; 
+            border: 1px solid rgba(255,255,255,0.08); transition: all 0.5s var(--easing); cursor: pointer; 
+            display: flex; flex-direction: column; height: 100%;
+        }
         .product:hover { transform: translateY(-10px); background: #080808; border-color: rgba(255,255,255,0.2); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
         
-        .product-img { height: 380px; overflow: hidden; background: #080808; border-radius: 24px 24px 0 0; position: relative; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--easing); }
+        .product-img { width: 100%; aspect-ratio: 3 / 4; overflow: hidden; background: #080808; border-radius: 24px 24px 0 0; position: relative; flex-shrink: 0; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.8s var(--easing); }
         .product:hover .product-img img { transform: scale(1.08); }
         
-        .product-info { padding: 24px; transition: transform 0.4s var(--easing), opacity 0.4s; }
+        .product-info { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; transition: transform 0.4s var(--easing), opacity 0.4s; }
         .product:hover .product-info { transform: translateY(15px); opacity: 0; }
         
         .product:hover .hover-overlay { opacity: 1; }
@@ -236,8 +231,8 @@
 
         .product-top { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
         .product h3 { font-family: 'Unbounded', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pure); line-height: 1.4; }
-        .price { color: var(--muted); font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 16px; margin-top: auto; }
-        .product p { color: var(--muted2); font-size: 14px; line-height: 1.6; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .product p { color: var(--muted2); font-size: 14px; line-height: 1.6; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 16px; }
+        .price { color: var(--muted); font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 16px; margin-top: auto; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); }
 
         /* --- МОДАЛЬНОЕ ОКНО ПРЕДМЕТА --- */
         .modal {
@@ -264,7 +259,7 @@
         
         /* Левая часть - галерея */
         .modal-gallery { display: flex; flex-direction: column; background: #050505; }
-        .modal-main-img { width: 100%; height: 50vh; min-height: 400px; object-fit: cover; }
+        .modal-main-img { width: 100%; height: 60vh; max-height: 600px; object-fit: contain; background: transparent; }
         .modal-thumbs { display: flex; gap: 8px; padding: 16px; overflow-x: auto; background: #080808; border-top: 1px solid rgba(255,255,255,0.05); scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.2) transparent; }
         .modal-thumbs::-webkit-scrollbar { height: 4px; }
         .modal-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
@@ -343,7 +338,7 @@
             
             .modal-content { grid-template-columns: 1fr; max-height: 95vh; overflow-y: auto; }
             .modal-gallery { max-height: auto; }
-            .modal-main-img { height: 40vh; min-height: 300px; }
+            .modal-main-img { height: 50vh; min-height: 400px; }
             .modal-info { padding: 32px; overflow-y: visible; }
         }
 
@@ -357,7 +352,6 @@
             .brand-text span { display: none; }
             .nav-cta { padding: 12px 20px; font-size: 10px; }
             .nav-cta svg { width: 14px; height: 14px; }
-            .fashion-tag { right: 160px; height: 70px; }
             
             .hero { padding-top: 140px; padding-bottom: 60px; }
             .hero-actions .btn { width: 100%; }
@@ -371,8 +365,12 @@
             
             .collection-card { flex: 0 0 85%; min-height: 500px; border-radius: 24px; } 
             .collection-info h3 { font-size: 26px; }
-            .products { grid-template-columns: 1fr; }
-            .product-img { height: 420px; }
+            
+            /* На мобилке 2 колонки смотрятся гораздо лучше */
+            .products { grid-template-columns: repeat(2, 1fr); gap: 12px; } 
+            .product-info { padding: 16px; }
+            .product h3 { font-size: 11px; }
+            .price { font-size: 14px; padding-top: 8px; }
             
             .about-text, .showroom-panel, .contact-card, .form-card { padding: 32px 24px; border-radius: 30px; }
             .about-photo, .showroom-image { min-height: 400px; border-radius: 30px; }
@@ -385,7 +383,8 @@
             .modal-content { border-radius: 24px; }
             .modal-close { top: 16px; right: 16px; width: 36px; height: 36px; font-size: 20px; background: rgba(0,0,0,0.5); }
             .modal-title { font-size: 28px; }
-            .modal-info { padding: 24px; }
+            .modal-info { padding: 20px; }
+            .modal-main-img { height: 45vh; min-height: 300px; }
         }
     </style>
 </head>
@@ -416,9 +415,6 @@
                 </svg>
                 Записаться
             </a>
-        </div>
-        <div class="fashion-tag">
-            <span>DROP 1</span>
         </div>
     </div>
 </header>
@@ -806,7 +802,7 @@
         },
         {
             id: 6,
-            title: "Трикотажная рубашка",
+            title: "Трикотажная рубашка (Черная)",
             price: "13 000 ₽",
             short: "Классический силуэт и современные детали.",
             desc: "Трикотажная рубашка сочетает в себе классический силуэт и современные детали. Изготовленная из плотного, но мягкого трикотажа, она идеально подходит для создания многослойных образов. Накладные карманы на груди добавляют функциональности и практичности, а контрастная отстрочка подчеркивает силуэт. Оригинальные пуговицы завершают образ.",
@@ -940,9 +936,9 @@
                 <div class="product-info">
                     <div class="product-top">
                         <h3>${item.title}</h3>
-                        <span class="price">${item.price}</span>
                     </div>
                     <p>${item.short}</p>
+                    <span class="price">${item.price}</span>
                 </div>
                 <div class="hover-overlay"><span>Смотреть детали</span></div>
             </div>
