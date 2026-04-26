@@ -127,11 +127,17 @@
             gap: 18px; 
             overflow-x: auto; 
             scroll-snap-type: x mandatory; 
-            padding-bottom: 40px; 
-            margin-bottom: -40px;
-            scrollbar-width: none; /* Скрытие скроллбара для Firefox */
+            padding-bottom: 24px; 
+            margin-bottom: 0px;
+            scrollbar-width: thin; /* Видимый тонкий скроллбар для Firefox */
+            scrollbar-color: rgba(255,255,255,0.4) transparent;
         }
-        .collections::-webkit-scrollbar { display: none; } /* Скрытие скроллбара для Chrome/Safari */
+        
+        /* Стилизация видимого скроллбара для Chrome/Safari */
+        .collections::-webkit-scrollbar { height: 6px; }
+        .collections::-webkit-scrollbar-track { background: transparent; border-radius: 10px; }
+        .collections::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
+        .collections::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
         
         .collection-card { 
             flex: 0 0 31%; /* Ширина карточки чуть меньше 33%, чтобы следующая немного выглядывала и намекала на скролл */
@@ -189,14 +195,6 @@
         .product p { margin-top: 9px; color: var(--muted2); font-size: 14px; line-height: 1.5; }
         .product:hover p { color: rgba(255,255,255,.62); }
 
-        .mood-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
-        .mood-card { min-height: 440px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); background: #111; }
-        .mood-card:nth-child(1) { border-radius: 54px 8px 54px 54px; }
-        .mood-card:nth-child(2) { border-radius: 8px 54px 54px 54px; }
-        .mood-content { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 26px; }
-        .mood-content h3 { font-family: 'Playfair Display'; font-size: clamp(38px, 5vw, 58px); line-height: .9; letter-spacing: -.055em; margin-bottom: 10px; }
-        .mood-content p { max-width: 560px; color: var(--muted); line-height: 1.6; }
-
         .city-gallery { background: #050505; }
         .gallery-grid { display: grid; grid-template-columns: 1fr 1.2fr 1fr 1.2fr; gap: 14px; align-items: stretch; }
         .gallery-grid .spb-art { height: 430px; min-height: 430px; border-radius: 30px; border: 1px solid rgba(255,255,255,.14); transition: .35s; }
@@ -234,7 +232,7 @@
 
         @media(max-width: 1000px) {
             .nav-links { display: none; }
-            .hero-grid, .manifest-grid, .showroom, .mood-grid, .contact { grid-template-columns: 1fr; }
+            .hero-grid, .manifest-grid, .showroom, .contact { grid-template-columns: 1fr; }
             .hero-visual { min-height: 560px; }
             .photo-main { left: 42px; }
             .collection-card { flex: 0 0 46%; } /* На планшете помещается 2 карточки, 3-я выглядывает */
@@ -502,25 +500,6 @@
                     </div>
                 </article>
             </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container mood-grid">
-            <article class="mood-card">
-                <div class="spb-art art-cathedral"></div>
-                <div class="mood-content">
-                    <h3>Архитектура в крое</h3>
-                    <p>Плечо, линия, пустота, контраст. Вещь должна держать человека так же уверенно, как колонна держит фасад.</p>
-                </div>
-            </article>
-            <article class="mood-card">
-                <div class="spb-art art-night"></div>
-                <div class="mood-content">
-                    <h3>Город внутри</h3>
-                    <p>Петербург здесь не открытка. Это память, тишина, северный свет и достоинство.</p>
-                </div>
-            </article>
         </div>
     </section>
 
