@@ -116,10 +116,10 @@
         h2 { max-width: 780px; font-family: 'Playfair Display', Georgia, serif; font-size: clamp(42px, 5.8vw, 78px); line-height: .9; letter-spacing: -.055em; }
         .section-copy { max-width: 430px; color: var(--muted); line-height: 1.72; }
 
-        .manifest-grid, .showroom, .contact { display: grid; grid-template-columns: 1.04fr .96fr; gap: 22px; align-items: stretch; }
-        .manifest-text, .contact-card, .form-card { padding: 40px; border-radius: 54px 8px 54px 54px; background: rgba(255,255,255,.065); border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); }
-        .manifest-text p { margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.75; }
-        .manifest-photo, .showroom-image { min-height: 620px; border-radius: 8px 54px 54px 54px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); }
+        .about-grid, .showroom, .contact { display: grid; grid-template-columns: 1.04fr .96fr; gap: 22px; align-items: stretch; }
+        .about-text, .contact-card, .form-card { padding: 40px; border-radius: 54px 8px 54px 54px; background: rgba(255,255,255,.065); border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); }
+        .about-text p { margin-top: 18px; color: var(--muted); font-size: 18px; line-height: 1.75; }
+        .about-photo, .showroom-image { min-height: 620px; border-radius: 8px 54px 54px 54px; overflow: hidden; border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); }
 
         /* Капсулы - горизонтальная лента (карусель) */
         .collections { 
@@ -131,7 +131,10 @@
             margin-bottom: 0px;
             scrollbar-width: thin; /* Видимый тонкий скроллбар для Firefox */
             scrollbar-color: rgba(255,255,255,0.4) transparent;
+            cursor: grab; /* Подсказка для перетаскивания */
         }
+        .collections:active { cursor: grabbing; }
+        .collections.active { scroll-snap-type: none; /* Отключаем привязку во время перетаскивания */ }
         
         /* Стилизация видимого скроллбара для Chrome/Safari */
         .collections::-webkit-scrollbar { height: 6px; }
@@ -224,6 +227,20 @@
         footer { padding: 34px 0 42px; border-top: 1px solid var(--line); color: var(--muted); }
         .footer-row { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
 
+        /* Анимация пульсации MARKOVMADE PRODUCTION */
+        .footer-pulse {
+            font-family: Unbounded, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: #fff;
+            animation: pulse-glow 3.5s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; text-shadow: 0 0 0 rgba(255,255,255,0); }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
+        }
+
         .reveal { opacity: 0; transform: translateY(28px); animation: reveal .8s ease forwards; }
         .delay-1 { animation-delay: .14s; }
         .delay-2 { animation-delay: .28s; }
@@ -232,7 +249,7 @@
 
         @media(max-width: 1000px) {
             .nav-links { display: none; }
-            .hero-grid, .manifest-grid, .showroom, .contact { grid-template-columns: 1fr; }
+            .hero-grid, .about-grid, .showroom, .contact { grid-template-columns: 1fr; }
             .hero-visual { min-height: 560px; }
             .photo-main { left: 42px; }
             .collection-card { flex: 0 0 46%; } /* На планшете помещается 2 карточки, 3-я выглядывает */
@@ -261,8 +278,8 @@
             
             .collection-card { flex: 0 0 85%; min-height: 440px; } /* На телефоне помещается 1 карточка, 2-я выглядывает */
             .products { grid-template-columns: 1fr; }
-            .manifest-text, .showroom-panel, .contact-card, .form-card { padding: 24px; }
-            .manifest-photo, .showroom-image { min-height: 420px; }
+            .about-text, .showroom-panel, .contact-card, .form-card { padding: 24px; }
+            .about-photo, .showroom-image { min-height: 420px; }
             .product-img { height: 360px; }
             .gallery-grid { grid-template-columns: 1fr; }
             .gallery-grid .spb-art, .gallery-grid .spb-art:nth-child(even) { height: 340px; min-height: 340px; }
@@ -282,7 +299,7 @@
             </div>
         </a>
         <nav class="nav-links">
-            <a href="#manifest">Манифест</a>
+            <a href="#about">О нас</a>
             <a href="#collections">Капсулы</a>
             <a href="#showroom">Шоурум</a>
             <a href="#catalog">Предметы</a>
@@ -301,7 +318,7 @@
                 <p class="lead reveal delay-2">Мы — Сами Питерские. Создаём одежду для мечтателей и создателей: для тех, кто вглядывается в линии города и видит в них отражение собственной души.</p>
                 <div class="hero-actions reveal delay-3">
                     <a class="btn btn-primary" href="#collections">Смотреть капсулы →</a>
-                    <a class="btn btn-ghost" href="#manifest">Прочитать манифест</a>
+                    <a class="btn btn-ghost" href="#about">Прочитать о нас</a>
                 </div>
             </div>
             <div class="hero-visual reveal delay-2">
@@ -327,15 +344,15 @@
         </div>
     </div>
 
-    <section class="section" id="manifest">
-        <div class="container manifest-grid">
-            <div class="manifest-text">
+    <section class="section" id="about">
+        <div class="container about-grid">
+            <div class="about-text">
                 <div class="section-kicker">Приветствуем вас</div>
                 <h2>Мы — Сами Питерские. Представляем SaintPerpetual.</h2>
                 <p>SaintPerpetual — это не просто бренд одежды. Это дань вечной красоте и духу Санкт-Петербурга: города, где искусство, история и время переплетаются в каждом фасаде, каждой улице и каждом взгляде.</p>
                 <p>Мы создаём одежду для тех, кто ценит детали, символику и утончённость. Для людей, которые хотят выделяться, оставаясь верными себе.</p>
             </div>
-            <div class="manifest-photo">
+            <div class="about-photo">
                 <div class="spb-art art-hermitage" role="img" aria-label="Архитектура Санкт-Петербурга"></div>
             </div>
         </div>
@@ -569,10 +586,56 @@
 
 <footer>
     <div class="container footer-row">
-        <div>© 2026 Сами Питерские. SaintPerpetual.</div>
+        <div class="footer-pulse">MARKOVMADE PRODUCTION 2026</div>
         <div>Black. White. Petersburg. Heritage.</div>
     </div>
 </footer>
+
+<script>
+    // Скрипт для прокрутки капсул мышкой (Drag-to-scroll для ПК)
+    const slider = document.querySelector('.collections');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let isDragging = false;
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        isDragging = false;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+    
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+    
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        isDragging = true;
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Коэффициент скорости прокрутки
+        slider.scrollLeft = scrollLeft - walk;
+    });
+
+    // Отключаем случайный переход по ссылке во время перетаскивания
+    const collectionLinks = document.querySelectorAll('.collection-card');
+    collectionLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(isDragging) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
