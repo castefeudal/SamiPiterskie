@@ -48,7 +48,9 @@
 
         /* --- НАВИГАЦИЯ --- */
         .topline { position: fixed; top: 20px; left: 0; right: 0; z-index: 100; pointer-events: none; transition: transform 0.4s var(--easing); }
-        .nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 12px 0 20px; border-radius: 999px; background: var(--glass); border: 1px solid rgba(255,255,255,0.06); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); pointer-events: auto; }
+        .topline .container { position: relative; } /* Нужно для позиционирования бирки */
+        
+        .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 16px 0 24px; border-radius: 999px; background: rgba(8, 8, 8, 0.92); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1); pointer-events: auto; }
         .brand { display: flex; align-items: center; gap: 14px; min-width: max-content; transition: opacity 0.3s; }
         .brand:hover { opacity: 0.8; }
         
@@ -63,17 +65,64 @@
             position: relative; 
         }
         
-        .brand-text strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: -0.02em; }
-        .brand-text span { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
+        .brand-text strong { display: block; font-family: 'Unbounded', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
+        .brand-text span { display: block; margin-top: 4px; color: rgba(255,255,255,0.8); font-size: 9px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
         
-        .nav-links { display: flex; gap: 32px; align-items: center; color: var(--pure); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
-        .nav-links a { position: relative; padding: 5px 0; opacity: 0.8; transition: opacity 0.3s; }
+        /* Шрифты шапки стали более фэшн и читаемыми */
+        .nav-links { display: flex; gap: 32px; align-items: center; color: var(--pure); font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+        .nav-links a { position: relative; padding: 5px 0; opacity: 0.85; transition: opacity 0.3s; }
         .nav-links a:hover { opacity: 1; }
-        .nav-links a:after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: #fff; transition: width 0.4s var(--easing); }
+        .nav-links a:after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--pure); transition: width 0.4s var(--easing); }
         .nav-links a:hover:after { width: 100%; }
         
-        .nav-cta { padding: 16px 28px; border-radius: 999px; background: #fff; color: #000; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.4s var(--easing); }
-        .nav-cta:hover { transform: scale(1.03); background: var(--pure); box-shadow: 0 10px 30px rgba(255,255,255,0.2); }
+        /* Кнопка с иконкой вешалки */
+        .nav-cta { display: flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 999px; background: var(--pure); color: var(--black); font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.4s var(--easing); pointer-events: auto; }
+        .nav-cta svg { width: 16px; height: 16px; transition: transform 0.4s var(--easing); }
+        .nav-cta:hover { transform: scale(1.03); background: #e8e8e8; box-shadow: 0 10px 30px rgba(255,255,255,0.25); }
+        .nav-cta:hover svg { transform: scale(1.1) rotate(-8deg); }
+
+        /* Вау-эффект: Свисающая брендовая бирка */
+        .fashion-tag {
+            position: absolute;
+            top: 72px; /* Выходит прямо из-под шапки */
+            right: 220px; /* Позиция рядом с кнопкой */
+            width: 34px;
+            height: 90px;
+            background: var(--red);
+            border-radius: 0 0 4px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            transform-origin: top center;
+            animation: swing 6s ease-in-out infinite;
+            z-index: 90;
+            pointer-events: none;
+        }
+        .fashion-tag:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--black);
+            border-radius: 50%;
+            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
+        }
+        .fashion-tag span {
+            margin-top: auto;
+            margin-bottom: 14px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-family: 'Unbounded', sans-serif;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: #fff;
+        }
+        @keyframes swing {
+            0%, 100% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+        }
 
         /* --- SVG АРТЫ С КИНЕМАТИКОЙ --- */
         .spb-art { position: relative; width: 100%; height: 100%; min-height: inherit; overflow: hidden; background: radial-gradient(circle at 76% 18%, rgba(255,255,255,.05), transparent 30%), linear-gradient(145deg, rgba(255,255,255,.03), rgba(255,255,255,0) 50%), #030303; transition: transform 1s var(--easing); }
@@ -335,6 +384,8 @@
             .brand-text strong { font-size: 13px; }
             .brand-text span { display: none; }
             .nav-cta { padding: 12px 20px; font-size: 10px; }
+            .nav-cta svg { width: 14px; height: 14px; }
+            .fashion-tag { right: 160px; height: 70px; } /* Уменьшаем бирку на телефоне */
             
             .hero { padding-top: 140px; padding-bottom: 60px; }
             .hero-actions .btn { width: 100%; }
@@ -363,22 +414,35 @@
 <body>
 
 <header class="topline">
-    <div class="container nav">
-        <a href="#top" class="brand">
-            <div class="brand-mark"></div>
-            <div class="brand-text">
-                <strong>Сами Питерские</strong>
-                <span>SaintPerpetual</span>
-            </div>
-        </a>
-        <nav class="nav-links">
-            <a href="#about">О нас</a>
-            <a href="#collections">Капсулы</a>
-            <a href="#showroom">Шоурум</a>
-            <a href="#catalog">Предметы</a>
-            <a href="#contacts">Контакты</a>
-        </nav>
-        <a href="#booking" class="nav-cta">Записаться</a>
+    <div class="container relative-wrapper">
+        <div class="nav">
+            <a href="#top" class="brand">
+                <div class="brand-mark"></div>
+                <div class="brand-text">
+                    <strong>Сами Питерские</strong>
+                    <span>SaintPerpetual</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">О нас</a>
+                <a href="#collections">Капсулы</a>
+                <a href="#showroom">Шоурум</a>
+                <a href="#catalog">Предметы</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <a href="#booking" class="nav-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v4"></path>
+                    <path d="M12 6c-3 0-8 2-8 5v1h16v-1c0-3-5-5-8-5z"></path>
+                    <path d="M12 2a2 2 0 0 1 2 2"></path>
+                </svg>
+                Записаться
+            </a>
+        </div>
+        <!-- Декоративная бирка -->
+        <div class="fashion-tag">
+            <span>DROP 1</span>
+        </div>
     </div>
 </header>
 
